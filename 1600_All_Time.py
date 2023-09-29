@@ -2,12 +2,12 @@
 
 
 
-#       Best Grand Blanc 800 Meter Teams by Top 4 Average
+#       Best Grand Blanc 1600 Meter Teams by Top 4 Average
 #               Written by Austin Rippee
 #                    Sep 28, 2023
 
 # The main function of this program is to find what were the best
-# 800 meter teams from Grand Blanc were based on a top 4 average to 
+# 1600 meter teams from Grand Blanc were based on a top 4 average to 
 # show speed and depth.
 
 #////////////////////////////////////////////////////////////////////
@@ -45,10 +45,8 @@ def convert_to_float_or_none(value):
     except ValueError:
         return None
 
-#==========================================================================
-
 try:
-    df = pd.read_csv('800_All_Time.csv')
+    df = pd.read_csv('1600_All_Time.csv')
 except FileNotFoundError:
     print("The file does not exist.")
 except pd.errors.EmptyDataError:
@@ -57,8 +55,6 @@ except pd.errors.ParserError as e:
     print(f"An error occurred while parsing the CSV: {e}")
 else:
     print("CSV file read successfully.")
-
-df = df.astype(str)
 
 # apply the time_str_to_seconds function which converts
 # the string into seconds which then can not be numerical.
@@ -98,7 +94,7 @@ result['Year'] = result['Year'].astype(int)
 result = result.sort_values(by=['Year'])
 
 # # Get the maximum value from the 'Converted' column
-min_value = result['Converted'].min() - 41
+min_value = result['Converted'].min() - 181
 max_value = result['Converted'].max() - 60
 
 # # Calculate the y-ticks
@@ -137,4 +133,4 @@ plt.grid(axis='y', linestyle='--', alpha=0.7)
 # # Show the graph
 #plt.tight_layout()
 #plt.show()
-plt.savefig('best8.png')
+plt.savefig('best16.png')
